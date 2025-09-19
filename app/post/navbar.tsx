@@ -47,10 +47,8 @@ export function Navbar() {
           <NavigationMenuList>
             {navLinks.map(link => (
               <NavigationMenuItem key={link.href}>
-                <Link href={link.href} legacyBehavior passHref>
-                  <NavigationMenuLink className={navigationMenuTriggerStyle()}>
-                    {link.label}
-                  </NavigationMenuLink>
+                <Link href={link.href} className={navigationMenuTriggerStyle()}>
+                  {link.label}
                 </Link>
               </NavigationMenuItem>
             ))}
@@ -73,6 +71,7 @@ export function Navbar() {
                     <Link
                       href={link.href}
                       className="text-lg font-medium text-muted-foreground transition-colors hover:text-foreground"
+                      legacyBehavior
                     >
                       {link.label}
                     </Link>
