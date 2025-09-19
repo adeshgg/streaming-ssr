@@ -4,6 +4,7 @@ import { Suspense } from "react"
 import { ErrorBoundary } from "react-error-boundary"
 import { PostsTable } from "./post-table"
 import { Navbar } from "./navbar"
+import { PostsTableSkeleton } from "./post-table-skeleton"
 
 export default async function Home() {
   const queryClient = getQueryClient()
@@ -22,11 +23,7 @@ export default async function Home() {
       <Navbar />
       <HydrationBoundary state={dehydrate(queryClient)}>
         <ErrorBoundary fallback={<div>Error occurred</div>}>
-          <Suspense
-            fallback={
-              <div className="container mx-auto py-10">Loading table...</div>
-            }
-          >
+          <Suspense fallback={<PostsTableSkeleton />}>
             <PostsTable />
           </Suspense>
         </ErrorBoundary>
